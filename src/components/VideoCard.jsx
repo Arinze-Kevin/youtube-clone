@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { Typography, Card, CardContent, CardMedia } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
+import { FiberManualRecordSharp } from "@mui/icons-material";
 
 import { demoThumbnailUrl, demoVideoUrl, demoVideoTitle, demoChannelUrl, demoChannelTitle } from "../utils/constants";
 
-const VideoCard = ({ video: { video: { videoId, author, thumbnails, descriptionSnippet, title, stats, movingThumbnails }}}) => {
-    console.log( author?.title );
+const VideoCard = ({ video: { video: { videoId, author, thumbnails, publishedTimeText, descriptionSnippet, title, stats, movingThumbnails }}}) => {
+    // console.log( author?.author );
   return (
-    <Card sx={{ width: { md: '320px', xs: '100%' }, boxShadow: 'none', borderRadius: 0 }}>
+    <Card sx={{ width: { md: '320px', xs: '100%' }, boxShadow: 'none', borderRadius: '5%', background: 'none' }}>
         <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
             <CardMedia
               image={thumbnails[0]?.url} 
@@ -29,7 +30,7 @@ const VideoCard = ({ video: { video: { videoId, author, thumbnails, descriptionS
             </Link>
             <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
                 <Typography variant='subtitle2' color='gray'>
-                 {stats?.views} views
+                 {parseInt(stats?.views).toLocaleString()} views <FiberManualRecordSharp sx={{ fontSize: 6 }} /> {publishedTimeText}
                 </Typography>
             </Link>
         </CardContent>
