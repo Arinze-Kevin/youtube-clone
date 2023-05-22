@@ -21,28 +21,52 @@ export const response = async (q) => {
     const { data } = await axios.request(`${BASE_URL}`, newOption);
 
     return data;
-}
+};
 
 
+const options2 = {
+    method: 'GET',
+    url: 'https://youtube-v38.p.rapidapi.com/channel/videos/',
+    headers: {
+      'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
+      'X-RapidAPI-Host': 'youtube-v38.p.rapidapi.com'
+    }
+  };
 
+  export const channelVideos = async (id) => {
+    const newOption = {
+        ...options2,
+        params: {
+            id,
+            hl: 'en',
+            gl: 'US'
+        },
+    }
+    const { data } = await axios.request(newOption);
 
+    return data;
+};
 
-        // const BASE_URL = 'https://youtube-v38.p.rapidapi.com/search/';
-        
-        // const options = {
-        //   params: {
-        //     q: 'despacito',
-        //     hl: 'en',
-        //     gl: 'US'
-        //   },
-        //   headers: {
-        //     'X-RapidAPI-Key': '310540b092msh0f9d4016eae731ap1128b3jsnf1f45b86313f',
-        //     'X-RapidAPI-Host': 'youtube-v38.p.rapidapi.com'
-        //   }
-        // };
-        
-        // export const fetchFromAPI = async (url) => {
-        //     const { data } = await axios.get(`${BASE_URL}/${url}`, options);
-        
-        //     return data;
-        // }
+const options3 = {
+    method: 'GET',
+    url: 'https://youtube-v38.p.rapidapi.com/channel/details/',
+    headers: {
+      'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
+      'X-RapidAPI-Host': 'youtube-v38.p.rapidapi.com'
+    }
+  };
+
+  export const channelDetails = async (id) => {
+    const newOption = {
+        ...options3,
+        params: {
+            id,
+            hl: 'en',
+            gl: 'US'
+        },
+    }
+    const { data } = await axios.request(newOption);
+
+    return data;
+};
+  
