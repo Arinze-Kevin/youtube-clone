@@ -5,7 +5,7 @@ import { FiberManualRecordSharp } from "@mui/icons-material";
 
 import { demoThumbnailUrl, demoVideoUrl, demoVideoTitle, demoChannelUrl, demoChannelTitle } from "../utils/constants";
 
-const VideoCard = ({ video: { video: { videoId, author, thumbnails, publishedTimeText, descriptionSnippet, title, stats, movingThumbnails }}}) => {
+const VideoCard = ({  channelDetail, video: { video: { videoId, author, thumbnails, publishedTimeText, descriptionSnippet, title, stats, movingThumbnails }}}) => {
     // console.log( author?.author );
   return (
     <Card sx={{ width: { md: '320px', xs: '100%' }, boxShadow: 'none', borderRadius: '5%', background: 'none' }}>
@@ -19,12 +19,12 @@ const VideoCard = ({ video: { video: { videoId, author, thumbnails, publishedTim
         <CardContent sx={{ background: '#1e1e1e', height: '106px' }}>
             <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
                 <Typography variant='subtitle1' fontWeight='bold' color='#FFF'>
-                    {title.slice(0, 60) || demoVideoTitle.slice(0, 60)}
+                    {title.slice(0, 60)}
                 </Typography>
             </Link>
             <Link to={author ? `/video/${author?.channelId}` : demoChannelUrl}>
                 <Typography variant='subtitle2' fontWeight='bold' color='gray'>
-                    {author?.title || demoVideoTitle}
+                    {author?.title || channelDetail?.title}
                     <CheckCircle sx={{ fontSize: 12, color: 'gray', ml: '5px' }} />
                 </Typography>
             </Link>

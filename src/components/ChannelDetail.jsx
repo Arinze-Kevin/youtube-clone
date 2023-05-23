@@ -6,25 +6,40 @@ import { Videos, ChannelCard } from './';
 import { channelVideos, channelDetails } from '../utils/fetchFromAPI';
 
 const ChannelDetails = () => {
-  const [channelDetail, setChannelDetail] = useState(null);
-  const [channelVideo, setChannelVideo] = useState([]);
+  const [channelDetail2, setChannelDetail2] = useState(null);
+  const [videos, setvideos] = useState([]);
 
   const { id } = useParams();
 
   useEffect(() => {
     channelDetails(id)
-      .then((data) => setChannelDetail(data));
+      .then((data) => setChannelDetail2(data));
 
     channelVideos(id)
-      .then((data) => setChannelVideo(data?.contents));
+      .then((data) => setvideos(data?.contents));
 
 }, [id]);
 
-console.log('channel detailsss', channelDetail);
-console.log('channel videosssss', channelVideo);
+console.log('channel detailsss', channelDetail2);
+console.log('channel videosssss', videos);
 
   return (
-    <div>{id}</div>
+    <Box minHeight='95vh'>
+      <Box>
+        <div style={{
+          background: 'linear-gradient(90deg, rgba(0,238,247,1) 0%, rgba(206,3,184,1) 100%, rgba(0,212,255,1) 100%)',
+          zIndex: 10,
+          height: '300px' 
+        }}
+        />
+        <ChannelCard channelDetail2={channelDetail2} marginTop="-110px" />
+      </Box>
+      <Box display="flex" p="2">
+        <Box sx={{ mr: { sm: '100px' }}} />
+        <Videos videos={videos} channelDetail={channelDetail2} />
+      </Box>
+    </Box>
+    
   )
 }
 
