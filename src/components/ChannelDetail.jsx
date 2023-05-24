@@ -20,8 +20,8 @@ const ChannelDetails = () => {
 
 }, [id]);
 
-console.log('channel detailsss', channelDetail2);
-console.log('channel videosssss', videos);
+// console.log('channel detailsss', channelDetail2);
+// console.log('channel videosssss', videos);
 
   return (
     <Box minHeight='95vh'>
@@ -35,7 +35,7 @@ console.log('channel videosssss', videos);
         <ChannelCard channelDetail2={channelDetail2} marginTop="-110px" />
       </Box>
       <Box display="flex" p="2">
-        <Box sx={{ mr: { sm: '100px' }}} />
+        <Box sx={{ mr: { sm: '30px',  md: '130px' }}} />
         <Videos videos={videos} channelDetail={channelDetail2} />
       </Box>
     </Box>

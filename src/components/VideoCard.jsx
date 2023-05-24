@@ -8,12 +8,12 @@ import { demoThumbnailUrl, demoVideoUrl, demoVideoTitle, demoChannelUrl, demoCha
 const VideoCard = ({  channelDetail, video: { video: { videoId, author, thumbnails, publishedTimeText, descriptionSnippet, title, stats, movingThumbnails }}}) => {
     // console.log( author?.author );
   return (
-    <Card sx={{ width: { md: '320px', xs: '100%' }, boxShadow: 'none', borderRadius: '5%', background: 'none' }}>
+    <Card sx={{ width: { md: '320px', xs: '100%', sm: '358px' }, boxShadow: 'none', borderRadius: '5%', background: 'none' }}>
         <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
             <CardMedia
               image={thumbnails[0]?.url} 
               alt={title}
-              sx={{ width: 358, height: 180 }}
+              sx={{ width: { xs: '100%', sm: '358', md: '320px'}, height: 180 }}
             />
         </Link>
         <CardContent sx={{ background: '#1e1e1e', height: '106px' }}>
